@@ -6,3 +6,4 @@
 
 (load "dgoodlad/global")
 (load "dgoodlad/defuns")
+(load "dgoodlad/fonts")
