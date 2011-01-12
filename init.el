@@ -5,3 +5,4 @@
 (load custom-file 'noerror)
 
 (load "dgoodlad/global")
+(load "dgoodlad/defuns")
