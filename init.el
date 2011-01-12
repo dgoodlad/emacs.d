@@ -9,3 +9,5 @@
 (load "dgoodlad/fonts")
 (load "dgoodlad/utf-8")
 (load "dgoodlad/scratch")
+
+(vendor 'color-theme)
