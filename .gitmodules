@@ -7,3 +7,6 @@
 [submodule "vendor/vimpulse"]
 	path = vendor/vimpulse
 	url = https://github.com/emacsmirror/vimpulse.git
+[submodule "vendor/zenburn"]
+	path = vendor/zenburn
+	url = https://github.com/dbrock/zenburn-el.git
