@@ -3,6 +3,7 @@
 
 (setq custom-file "~/.emacs.d/dgoodlad/custom.el")
 (load custom-file 'noerror)
+(setq viper-custom-file-name "~/.emacs.d/dgoodlad/dot-viper.el")
 
 (load "dgoodlad/env")
 (load "dgoodlad/global")
@@ -10,7 +11,6 @@
 (load "dgoodlad/fonts")
 (load "dgoodlad/utf-8")
 (load "dgoodlad/scratch")
-;(load "dgoodlad/ido")
 
 (vendor 'color-theme)
 (vendor 'vimpulse)
