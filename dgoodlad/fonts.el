@@ -1,7 +1,6 @@
 ;;; Fonts
 
-(set-face-attribute 'default nil
-                    :family "Meslo LG M DZ" :height 110)
+(set-face-attribute 'default nil :font "Meslo LG M DZ-11")
 
 ;; From: http://community.schemewiki.org/cgi-bin/scheme.cgi?Emacs
 ;;(and window-system
