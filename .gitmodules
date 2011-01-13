@@ -10,3 +10,6 @@
 [submodule "vendor/zenburn"]
 	path = vendor/zenburn
 	url = https://github.com/dbrock/zenburn-el.git
+[submodule "vendor/icicles"]
+	path = vendor/icicles
+	url = https://github.com/emacsmirror/icicles.git

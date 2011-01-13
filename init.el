@@ -9,7 +9,9 @@
 (load "dgoodlad/fonts")
 (load "dgoodlad/utf-8")
 (load "dgoodlad/scratch")
-(load "dgoodlad/ido")
+;(load "dgoodlad/ido")
 
 (vendor 'color-theme)
 (vendor 'vimpulse)
+;; Load icicles after everything else to avoid keybinding clashes
+(vendor 'icicles)
