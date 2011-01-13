@@ -6,7 +6,7 @@
 	url = git://github.com/rmm5t/color-theme-ir-black.git
 [submodule "vendor/vimpulse"]
 	path = vendor/vimpulse
-	url = https://github.com/emacsmirror/vimpulse.git
+	url = git://gitorious.org/vimpulse/vimpulse.git
 [submodule "vendor/zenburn"]
 	path = vendor/zenburn
 	url = https://github.com/dbrock/zenburn-el.git
