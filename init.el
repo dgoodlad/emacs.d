@@ -11,3 +11,4 @@
 (load "dgoodlad/scratch")
 
 (vendor 'color-theme)
+(vendor 'vimpulse)

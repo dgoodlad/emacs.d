@@ -4,3 +4,6 @@
 [submodule "vendor/color-theme-ir-black"]
 	path = vendor/color-theme-ir-black
 	url = git://github.com/rmm5t/color-theme-ir-black.git
+[submodule "vendor/vimpulse"]
+	path = vendor/vimpulse
+	url = https://github.com/emacsmirror/vimpulse.git
