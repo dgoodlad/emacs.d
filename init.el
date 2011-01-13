@@ -15,5 +15,6 @@
 (vendor 'color-theme)
 (vendor 'vimpulse)
 (vendor 'magit)
+(vendor 'magithub)
 ;; Load icicles after everything else to avoid keybinding clashes
 (vendor 'icicles)
