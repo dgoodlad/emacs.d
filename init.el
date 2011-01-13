@@ -9,6 +9,7 @@
 (load "dgoodlad/fonts")
 (load "dgoodlad/utf-8")
 (load "dgoodlad/scratch")
+(load "dgoodlad/ido")
 
 (vendor 'color-theme)
 (vendor 'vimpulse)
