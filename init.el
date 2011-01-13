@@ -16,5 +16,6 @@
 (vendor 'vimpulse)
 (vendor 'magit)
 (vendor 'magithub)
+(vendor 'ruby-mode)
 ;; Load icicles after everything else to avoid keybinding clashes
 (vendor 'icicles)

@@ -19,3 +19,9 @@
 [submodule "vendor/magithub"]
 	path = vendor/magithub
 	url = https://github.com/nex3/magithub.git
+[submodule "vendor/ruby-electric"]
+	path = vendor/ruby-electric
+	url = https://github.com/qoobaa/ruby-electric.git
+[submodule "vendor/ruby-mode"]
+	path = vendor/ruby-mode
+	url = https://github.com/jwiegley/ruby-mode.git
