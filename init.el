@@ -4,6 +4,7 @@
 (setq custom-file "~/.emacs.d/dgoodlad/custom.el")
 (load custom-file 'noerror)
 
+(load "dgoodlad/env")
 (load "dgoodlad/global")
 (load "dgoodlad/defuns")
 (load "dgoodlad/fonts")
@@ -13,5 +14,6 @@
 
 (vendor 'color-theme)
 (vendor 'vimpulse)
+(vendor 'magit)
 ;; Load icicles after everything else to avoid keybinding clashes
 (vendor 'icicles)

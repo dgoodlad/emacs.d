@@ -13,3 +13,6 @@
 [submodule "vendor/icicles"]
 	path = vendor/icicles
 	url = https://github.com/emacsmirror/icicles.git
+[submodule "vendor/magit"]
+	path = vendor/magit
+	url = https://github.com/philjackson/magit.git
