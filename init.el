@@ -18,5 +18,6 @@
 (vendor 'magit)
 (vendor 'magithub)
 (vendor 'ruby-mode)
+(vendor 'markdown-mode)
 ;; Load icicles after everything else to avoid keybinding clashes
 ;;(vendor 'icicles)
