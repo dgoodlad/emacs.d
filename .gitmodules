@@ -37,3 +37,6 @@
 [submodule "vendor/js2-mode"]
 	path = vendor/js2-mode
 	url = https://github.com/mooz/js2-mode.git
+[submodule "vendor/coffee-mode"]
+	path = vendor/coffee-mode
+	url = git@github.com:/dgoodlad/coffee-mode.git
