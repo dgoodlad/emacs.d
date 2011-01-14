@@ -25,3 +25,6 @@
 [submodule "vendor/ruby-mode"]
 	path = vendor/ruby-mode
 	url = https://github.com/jwiegley/ruby-mode.git
+[submodule "vendor/color-theme-railscasts"]
+	path = vendor/color-theme-railscasts
+	url = https://github.com/olegshaldybin/color-theme-railscasts.git
