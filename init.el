@@ -18,6 +18,7 @@
 (vendor 'magit)
 (vendor 'magithub)
 (vendor 'ruby-mode)
+(vendor 'js2-mode)
 (vendor 'markdown-mode)
 (vendor 'yaml-mode)
 ;; Load icicles after everything else to avoid keybinding clashes

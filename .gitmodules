@@ -34,3 +34,6 @@
 [submodule "vendor/yaml-mode"]
 	path = vendor/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "vendor/js2-mode"]
+	path = vendor/js2-mode
+	url = https://github.com/mooz/js2-mode.git
