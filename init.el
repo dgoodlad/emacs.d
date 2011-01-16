@@ -22,5 +22,6 @@
 (vendor 'coffee-mode)
 (vendor 'markdown-mode)
 (vendor 'yaml-mode)
+(vendor 'auto-complete)
 ;; Load icicles after everything else to avoid keybinding clashes
 ;;(vendor 'icicles)
