@@ -16,3 +16,4 @@
 ;; Disable vi-style keybindings in minibuffer
 (setq viper-vi-style-in-minibuffer nil)
 
+(add-to-list 'viper-vi-state-mode-list 'ruby-mode)
