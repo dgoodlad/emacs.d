@@ -32,7 +32,8 @@
 
 ;; Collect all backup files in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '(("." "~/.emacs.d/backups" t)))
+(setq auto-save-file-name-transforms
+      '((".*" "~/.emacs.d/autosaves/\\1" t)))
 
 ;; Gotta see matching parens
 (show-paren-mode t)
