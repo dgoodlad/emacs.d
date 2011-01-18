@@ -12,6 +12,7 @@
 (load "dgoodlad/utf-8")
 (load "dgoodlad/scratch")
 (load "dgoodlad/ido")
+(load "dgoodlad/flymake-ruby")
 
 (vendor 'color-theme)
 (vendor 'vimpulse)

@@ -2,8 +2,8 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-	    (ruby-electric-mode)
-	    (flymake-mode 1)
+	    (ruby-electric-mode t)
+	    (flymake-ruby-load)
             ))
 
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
