@@ -40,3 +40,6 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = git@github.com:/dgoodlad/coffee-mode.git
+[submodule "vendor/scss-mode"]
+	path = vendor/scss-mode
+	url = https://github.com/antonj/scss-mode.git

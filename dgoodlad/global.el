@@ -49,4 +49,4 @@
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; Don't use TABs, expand them to spaces
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
