@@ -23,6 +23,7 @@
 (vendor 'js2-mode)
 (vendor 'coffee-mode)
 (vendor 'markdown-mode)
+(vendor 'mustache-mode)
 (vendor 'yaml-mode)
 (vendor 'scss-mode)
 (vendor 'auto-complete)
