@@ -13,8 +13,9 @@
 (load "dgoodlad/scratch")
 (load "dgoodlad/ido")
 (load "dgoodlad/flymake-ruby")
+(load "dgoodlad/color-theme")
 
-(vendor 'color-theme)
+;(vendor 'color-theme)
 (vendor 'vimpulse)
 (vendor 'magit)
 (vendor 'magithub)
