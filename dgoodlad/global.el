@@ -9,6 +9,9 @@
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; No stupid win31-style toolbar icons
+(tool-bar-mode -1)
+
 ;; Highlight regions and add special behaviors to regions.
 ;; "C-h d transient" for more info
 (setq transient-mark-mode t)
@@ -47,6 +50,8 @@
 
 ;; Trailing whitespace is unnecessary
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+
+(setq-default tab-width 2)
 
 ;; Don't use TABs, expand them to spaces
 (setq-default indent-tabs-mode nil)
