@@ -1,31 +1,20 @@
+;; Emacs Configuration
+
+; Emacs home dir on load path
 (add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/vendor")
 
-(setq custom-file "~/.emacs.d/dgoodlad/custom.el")
-(load custom-file 'noerror)
-(setq viper-custom-file-name "~/.emacs.d/dgoodlad/dot-viper.el")
+; Start the server
+(server-start)
 
-(load "dgoodlad/env")
-(load "dgoodlad/global")
-(load "dgoodlad/defuns")
-(load "dgoodlad/fonts")
-(load "dgoodlad/utf-8")
-(load "dgoodlad/scratch")
-(load "dgoodlad/ido")
-(load "dgoodlad/flymake-ruby")
-(load "dgoodlad/color-theme")
+; Globals - General global config
+(load "conf/global")
 
-;(vendor 'color-theme)
-(vendor 'vimpulse)
-(vendor 'magit)
-(vendor 'magithub)
-(vendor 'ruby-mode)
-(vendor 'js2-mode)
-(vendor 'coffee-mode)
-(vendor 'markdown-mode)
-(vendor 'mustache-mode)
-(vendor 'yaml-mode)
-(vendor 'scss-mode)
-(vendor 'auto-complete)
-;; Load icicles after everything else to avoid keybinding clashes
-;;(vendor 'icicles)
+; Key bindings
+(load "conf/bindings")
+
+; Packaging - elpa, el-get, etc.
+(load "conf/packaging")
+
+; Actual package list - hand over, it will load the configs on a per package
+; basis
+(load "packages")
