@@ -44,6 +44,13 @@
         (:name magit)
         (:name magithub)
         (:name nxhtml)
+        (:name org-mode
+               :url "git://orgmode.org/org-mode.git"
+               :after (lambda ()
+                        (global-set-key "\C-cl" 'org-store-link)
+                        (global-set-key "\C-cc" 'org-capture)
+                        (global-set-key "\C-ca" 'org-agenda)
+                        (global-set-key "\C-cb" 'org-iswitchb)))
         ))
 
 ; Do this sync, so required packages are installed and loaded before running
