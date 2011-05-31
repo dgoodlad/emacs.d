@@ -71,3 +71,5 @@
 
 ; Return always indents
 (define-key global-map (kbd "RET") 'newline-and-indent)
+
+(global-hl-line-mode)
