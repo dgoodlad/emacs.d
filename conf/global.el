@@ -40,9 +40,6 @@
 ; Decent font choice
 (set-frame-font "Meslo LG M DZ-10")
 
-; Theme
-(load "color-theme")
-
 ; Always enable ido mode
 (ido-mode t)
 
