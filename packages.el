@@ -24,6 +24,7 @@
         (:name ruby-compilation)
         (:name rhtml-mode)
         (:name css-mode :type elpa)
+        (:name haml-mode)
         (:name yaml-mode)
         (:name auto-complete
                :after (lambda () (load "conf/auto-complete")))
