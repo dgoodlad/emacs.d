@@ -1,3 +1,4 @@
+(setq ruby-deep-indent-paren nil)
 
 (eval-after-load 'ruby-mode
   '(progn
