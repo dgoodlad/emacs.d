@@ -15,6 +15,11 @@
               :after (lambda()
                        (load "conf/dot-viper")
                        (load "conf/vimpulse")))
+        (:name multi-term
+               :after (lambda()
+                        (setq multi-term-program "/bin/zsh")
+                        (global-set-key (kbd "C-c t") 'multi-term-next)
+                        (global-set-key (kbd "C-c T") 'multi-term)))
         (:name ruby-mode
                :after (lambda() (load "conf/ruby")))
         (:name ruby-electric)
