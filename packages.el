@@ -35,7 +35,9 @@
                :after (lambda () (load "conf/auto-complete")))
         (:name paredit)
         (:name coffee-mode)
-        (:name magit)
+        (:name magit
+               :after (lambda()
+                        (global-set-key (kbd "C-c g") 'magit-status)))
         (:name magithub)
         (:name nxhtml)
         (:name js2-mode
