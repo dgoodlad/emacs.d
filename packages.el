@@ -1,17 +1,7 @@
 ;; Contains the list of packages we are using
 
 (setq el-get-sources
-      '((:name package
-               :after (lambda()
-                        (setq package-archives '("tromey" . "http://tromey.com/elpa/"))))
-        (:name color-theme
-               :type git
-               :url "https://github.com/emacsmirror/color-theme.git")
-        (:name color-theme-solarized
-               :after (lambda()
-                        (color-theme-solarized-dark)))
-        (:name color-theme-zenburn)
-        (:name vimpulse
+      '((:name vimpulse
               :after (lambda()
                        (load "conf/dot-viper")
                        (load "conf/vimpulse")))
@@ -22,27 +12,22 @@
                         (global-set-key (kbd "C-c T") 'multi-term)))
         (:name ruby-mode
                :after (lambda() (load "conf/ruby")))
-        (:name ruby-electric)
         (:name inf-ruby
                :type elpa
                :load "inf-ruby.el")
-        (:name ruby-compilation)
-        (:name rhtml-mode)
-        (:name css-mode :type elpa)
-        (:name haml-mode)
-        (:name yaml-mode)
         (:name auto-complete
                :after (lambda () (load "conf/auto-complete")))
-        (:name paredit)
-        (:name coffee-mode)
         (:name magit
                :after (lambda()
                         (global-set-key (kbd "C-c g") 'magit-status)))
-        (:name magithub)
-        (:name nxhtml)
-        (:name js2-mode
+        (:name html5-el
                :type git
-               :url "https://github.com/mooz/js2-mode")
+               :url "https://github.com/hober/html5-el.git"
+               :build ("make relaxng")
+               :features whattf-dt
+               :before (lambda()
+                         (eval-after-load "rng-loc"
+                           '(add-to-list 'rng-schema-locating-files "~/.emacs.d/el-get/html5-el/schemas.xml"))))
         (:name markdown-mode
                :after (lambda ()
                         (setq markdown-mode-hook 'turn-on-auto-fill)))
@@ -55,5 +40,15 @@
                         (add-to-list 'load-path "~/.emacs.d/el-get/org-mode")))
         ))
 
+(setq my-packages
+      (append
+        '(color-theme color-theme-solarized color-theme-zenburn vimpulse
+                      switch-window
+                      multi-term ruby-mode ruby-electric inf-ruby
+                      ruby-compilation rhtml-mode haml-mode
+                      auto-complete paredit coffee-mode magit magithub
+                      js2-mode markdown-mode org-mode)
+        (mapcar 'el-get-source-name el-get-sources)))
+
 ; Do this sync, so required packages are installed and loaded before running
-(el-get 'sync)
+(el-get 'sync my-packages)
