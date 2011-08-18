@@ -38,6 +38,9 @@
                         (global-set-key "\C-ca" 'org-agenda)
                         (global-set-key "\C-cb" 'org-iswitchb)
                         (add-to-list 'load-path "~/.emacs.d/el-get/org-mode")))
+        (:name color-theme-solarized
+               :after (lambda ()
+                        (color-theme-solarized-light)))
         ))
 
 (setq my-packages
