@@ -48,7 +48,11 @@
                             (require 'solarized-definitions)
                             (require 'solarized-light-theme)
                             (require 'solarized-dark-theme)))
-        (:name js2-mode)
+        (:name js2-mode
+               :type :git
+               :url "https://github.com/mooz/js2-mode.git")
+        (:name scss-mode)
+        (:name yaml-mode)
         ))
 
 (setq my-packages
