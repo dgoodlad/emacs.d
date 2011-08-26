@@ -38,19 +38,40 @@
                         (global-set-key "\C-ca" 'org-agenda)
                         (global-set-key "\C-cb" 'org-iswitchb)
                         (add-to-list 'load-path "~/.emacs.d/el-get/org-mode")))
+        (:name color-theme
+               :type emacsmirror)
         (:name color-theme-solarized
-               :after (lambda ()
-                        (color-theme-solarized-light)))
+               :compile ("solarized-definitions.el" "solarized-light-theme.el" "solarized-dark-theme.el")
+               :load-path (".")
+               :load nil
+               :post-init (lambda ()
+                            (require 'solarized-definitions)
+                            (require 'solarized-light-theme)
+                            (require 'solarized-dark-theme)))
+        (:name js2-mode)
         ))
 
 (setq my-packages
       (append
-        '(color-theme color-theme-solarized color-theme-zenburn vimpulse
-                      switch-window
-                      multi-term ruby-mode ruby-electric inf-ruby
-                      ruby-compilation rhtml-mode haml-mode
-                      auto-complete paredit coffee-mode magit magithub
-                      js2-mode markdown-mode org-mode)
+        '(color-theme-solarized
+           vimpulse
+           switch-window
+           multi-term
+           ruby-mode
+           ruby-electric
+           ruby-compilation
+           rhtml-mode
+           haml-mode
+           auto-complete
+           paredit
+           coffee-mode
+           magit
+           magithub
+           js2-mode
+           markdown-mode
+           org-mode
+           )
+        ;()))
         (mapcar 'el-get-source-name el-get-sources)))
 
 ; Do this sync, so required packages are installed and loaded before running
