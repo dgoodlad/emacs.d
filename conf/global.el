@@ -38,7 +38,7 @@
 (tooltip-mode -1)
 
 ; Decent font choice
-(set-frame-font "Meslo LG M DZ-14")
+(set-frame-font "Meslo LG M DZ-11")
 
 ; Always enable ido mode
 (ido-mode t)
