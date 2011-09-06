@@ -30,16 +30,12 @@
                         (global-set-key "\C-ca" 'org-agenda)
                         (global-set-key "\C-cb" 'org-iswitchb)
                         (add-to-list 'load-path "~/.emacs.d/el-get/org-mode")))
-        (:name color-theme
-               :type emacsmirror)
-        (:name color-theme-solarized
-               :compile ("solarized-definitions.el" "solarized-light-theme.el" "solarized-dark-theme.el")
-               :load-path (".")
-               :load nil
-               :post-init (lambda ()
-                            (require 'solarized-definitions)
-                            (require 'solarized-light-theme)
-                            (require 'solarized-dark-theme)))
+        (:name zenburn-theme
+               :type http
+               :url "https://github.com/djcb/elisp/raw/master/themes/zenburn-theme.el"
+               :load "zenburn-theme.el"
+               :after (lambda ()
+                        (enable-theme 'zenburn)))
         (:name js2-mode
                :type :git
                :url "https://github.com/mooz/js2-mode.git")
@@ -49,24 +45,23 @@
 
 (setq my-packages
       (append
-        '(color-theme-solarized
-           vimpulse
-           switch-window
-           multi-term
-           ruby-mode
-           ruby-electric
-           ruby-compilation
-           rhtml-mode
-           haml-mode
-           auto-complete
-           paredit
-           coffee-mode
-           magit
-           magithub
-           js2-mode
-           markdown-mode
-           org-mode
-           )
+        '(vimpulse
+          switch-window
+          multi-term
+          ruby-mode
+          ruby-electric
+          ruby-compilation
+          rhtml-mode
+          haml-mode
+          auto-complete
+          paredit
+          coffee-mode
+          magit
+          magithub
+          js2-mode
+          markdown-mode
+          org-mode
+          )
         ;()))
         (mapcar 'el-get-source-name el-get-sources)))
 
