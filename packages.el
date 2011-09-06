@@ -20,14 +20,6 @@
         (:name magit
                :after (lambda()
                         (global-set-key (kbd "C-c g") 'magit-status)))
-        (:name html5-el
-               :type git
-               :url "https://github.com/hober/html5-el.git"
-               :build ("make relaxng")
-               :features whattf-dt
-               :before (lambda()
-                         (eval-after-load "rng-loc"
-                           '(add-to-list 'rng-schema-locating-files "~/.emacs.d/el-get/html5-el/schemas.xml"))))
         (:name markdown-mode
                :after (lambda ()
                         (setq markdown-mode-hook 'turn-on-auto-fill)))
