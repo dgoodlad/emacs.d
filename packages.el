@@ -51,11 +51,12 @@
           switch-window
           multi-term
           ruby-mode
-          ruby-electric
           ruby-compilation
           rhtml-mode
           haml-mode
           auto-complete
+          autopair
+          yasnippet
           paredit
           coffee-mode
           magit
