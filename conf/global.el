@@ -70,3 +70,7 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 (global-hl-line-mode)
+
+; We live in a unicode world
+(setq terminal-coding-system 'utf-8-unix)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
