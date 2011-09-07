@@ -71,6 +71,7 @@
           js2-mode
           markdown-mode
           org-mode
+          puppet-mode
           )
         ;()))
         (mapcar 'el-get-source-name el-get-sources)))
