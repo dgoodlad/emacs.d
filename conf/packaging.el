@@ -1,8 +1,7 @@
 ;; Config for packing systems
 
 ; package.el (ELPA)
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")))
 
 ; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
