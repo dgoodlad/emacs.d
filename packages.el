@@ -41,7 +41,7 @@
                         (add-to-list 'load-path "~/.emacs.d/el-get/org-mode")))
         (:name zenburn-theme
                :type http
-               :url "https://github.com/djcb/elisp/raw/master/themes/zenburn-theme.el"
+               :url "https://github.com/bbatsov/zenburn-emacs/raw/master/zenburn-theme.el"
                :load "zenburn-theme.el"
                :after (lambda ()
                         (enable-theme 'zenburn)))
