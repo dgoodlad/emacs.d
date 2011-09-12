@@ -72,6 +72,7 @@
           magit
           magithub
           markdown-mode
+          mustache-mode
           org-mode
           puppet-mode
           )
