@@ -4,3 +4,6 @@ autosaves/*
 ac-comphist.dat
 el-get/*
 elpa/*
+/eshell/history
+/eshell/lastdir
+/url/cookies
