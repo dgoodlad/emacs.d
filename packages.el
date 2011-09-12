@@ -24,6 +24,12 @@
         (:name inf-ruby
                :type elpa
                :load "inf-ruby.el")
+        (:name js2-mode
+               :type git
+               :url "https://github.com/mooz/js2-mode.git"
+               :compile nil
+               :load "js2-mode.elc"
+               :build ("emacs --batch -f batch-byte-compile js2-mode.el"))
         (:name auto-complete
                :after (lambda () (load "conf/auto-complete")))
         (:name magit
@@ -45,9 +51,6 @@
                :load "zenburn-theme.el"
                :after (lambda ()
                         (enable-theme 'zenburn)))
-        (:name js2-mode
-               :type :git
-               :url "https://github.com/mooz/js2-mode.git")
         (:name scss-mode)
         (:name yaml-mode)
         ))
@@ -68,7 +71,6 @@
           coffee-mode
           magit
           magithub
-          js2-mode
           markdown-mode
           org-mode
           puppet-mode
