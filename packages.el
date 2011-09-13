@@ -5,6 +5,10 @@
                :after (lambda()
                         (evil-mode 1)
                         (setq evil-shift-width 2)))
+        (:name evil-surround
+               :depends evil
+               :type git
+               :url "https://github.com/timcharper/evil-surround.git")
         (:name multi-term
                :after (lambda()
                         (setq multi-term-program "/bin/zsh")
