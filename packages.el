@@ -30,6 +30,29 @@
                :compile nil
                :load "js2-mode.elc"
                :build ("emacs --batch -f batch-byte-compile js2-mode.el"))
+        (:name slime
+               :description "Superior Lisp Interaction Mode for Emacs"
+               :type git
+               :module "slime"
+               ;:info "doc"
+               :url "https://github.com/nablaone/slime.git"
+               :load-path ("." "contrib")
+               :compile (".")
+               )
+        (:name swank-js
+               :type git
+               :url "https://github.com/ivan4th/swank-js.git"
+               :depends slime
+               :require nil
+               :after (lambda ()
+                        (require 'slime)
+                        (slime-setup '(slime-repl slime-js))
+                        (global-set-key [f5] 'slime-js-reload)
+                        (add-hook 'js2-mode-hook
+                                  (lambda () (slime-js-minor-mode 1)))
+                        (add-hook 'css-mode-hook
+                                  (lambda ()
+                                    (define-key css-mode-map "\M-\C-x" 'slime-js-refresh-css)))))
         (:name auto-complete
                :after (lambda () (load "conf/auto-complete")))
         (:name magit
