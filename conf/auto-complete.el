@@ -9,4 +9,4 @@
 ;; Make auto-complete co-exist with viper-mode nicely
 (define-key ac-complete-mode-map (kbd "C-n") 'dabbrev-expand)
 (define-key ac-complete-mode-map (kbd "C-p") 'dabbrev-expand)
-(define-key ac-complete-mode-map viper-ESC-key 'viper-intercept-ESC-key)
+;(define-key ac-complete-mode-map viper-ESC-key 'viper-intercept-ESC-key)

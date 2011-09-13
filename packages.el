@@ -1,10 +1,10 @@
 ;; Contains the list of packages we are using
 
 (setq el-get-sources
-      '((:name vimpulse
-              :after (lambda()
-                       (load "conf/dot-viper")
-                       (load "conf/vimpulse")))
+      '((:name evil
+               :after (lambda()
+                        (evil-mode 1)
+                        (setq evil-shift-width 2)))
         (:name multi-term
                :after (lambda()
                         (setq multi-term-program "/bin/zsh")
@@ -80,7 +80,7 @@
 
 (setq my-packages
       (append
-        '(vimpulse
+        '(evil
           switch-window
           multi-term
           ruby-mode
