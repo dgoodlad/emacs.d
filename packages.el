@@ -33,6 +33,9 @@
                :load "zenburn-theme.el"
                :after (lambda ()
                         (enable-theme 'zenburn)))
+        (:name ack-and-a-half
+               :type git
+               :url "https://github.com/jhelwig/ack-and-a-half.git")
         ))
 
 
@@ -45,6 +48,7 @@
 
         auto-complete
         yasnippet
+        ack-and-a-half
 
         magit
         magithub
