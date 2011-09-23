@@ -9,3 +9,6 @@
                      (if (string-match "/\\* *global \\(.*?\\)\\*/" btext) (match-string-no-properties 1 btext) "")
                      "[ ,]+" t))
               )))
+
+(add-hook 'js2-mode-hook
+          (lambda () (setq js2-basic-offset 2)))
