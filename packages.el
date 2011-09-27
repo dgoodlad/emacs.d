@@ -36,19 +36,25 @@
         (:name ack-and-a-half
                :type git
                :url "https://github.com/jhelwig/ack-and-a-half.git")
+        (:name idomenu
+               :load "idomenu.el"
+               :require "idomenu")
         ))
 
 
 (setq my-packages
       '(evil
         evil-surround
-        switch-window
 
         zenburn-theme
 
         auto-complete
         yasnippet
         ack-and-a-half
+        idomenu
+        switch-window
+
+        multi-term
 
         magit
         magithub
