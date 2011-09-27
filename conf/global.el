@@ -41,6 +41,8 @@
 (set-frame-font "Meslo LG M DZ-11")
 
 ; Always enable ido mode
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (ido-mode t)
 
 ; Wrap at 80 chars
