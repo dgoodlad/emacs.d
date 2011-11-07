@@ -33,6 +33,14 @@
                :load "zenburn-theme.el"
                :after (lambda ()
                         (enable-theme 'zenburn)))
+        (:name color-theme-solarized
+               :description "Emacs highlighting using Ethan Schoonover's Solarized color scheme"
+               :type git
+               :url "https://github.com/sellout/emacs-color-theme-solarized.git"
+               :load ("solarized-dark-theme.el" "solarized-light-theme.el")
+               :compile ()
+               :require nil
+               :depends ())
         (:name ack-and-a-half
                :type git
                :url "https://github.com/jhelwig/ack-and-a-half.git")
@@ -46,7 +54,8 @@
       '(evil
         evil-surround
 
-        zenburn-theme
+        ;zenburn-theme
+        color-theme-solarized
 
         auto-complete
         yasnippet
