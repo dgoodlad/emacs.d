@@ -57,7 +57,7 @@
         multi-term
 
         magit
-        magithub
+        ;magithub
 
         ruby-mode
         ruby-compilation
