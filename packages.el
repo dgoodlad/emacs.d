@@ -96,6 +96,7 @@
         ack-and-a-half
         idomenu
         switch-window
+        smex
 
         multi-term
 
