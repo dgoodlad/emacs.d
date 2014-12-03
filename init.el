@@ -99,6 +99,9 @@
 
 (evil-leader/set-leader ",")
 
+(evil-leader/set-key
+  "g" 'magit-status)
+
 (define-key evil-normal-state-map "L" 'evil-lisp-state)
 
 ; Magit/evil
