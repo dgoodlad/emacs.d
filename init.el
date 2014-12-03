@@ -33,11 +33,14 @@
 		      idle-highlight-mode
 		      ido-ubiquitous
 		      magit
+                      powerline
+                      powerline-evil
                       projectile
                       puppet-mode
                       puppetfile-mode
                       rainbow-delimiters
 		      smartparens
+                      smex
                       switch-window
                       solarized-theme
                       yaml-mode
@@ -61,6 +64,10 @@
   )
 
 (load-theme 'solarized-dark t)
+
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-evil-vim-color-theme)
 
 ;; -----------------------------------------------------------------------------
 ;; Environment
@@ -107,6 +114,9 @@
 
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+(require 'smex) ;; ido-based M-x
+(global-set-key (kbd "M-x") 'smex)
 
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
@@ -170,7 +180,7 @@
 
 (require 'projectile)
 (setq projectile-cache-file (expand-file-name "projectile.cache" my-savefile-dir))
-(setq projectile-switch-project-action 'projectile-find-file-in-known-projects)
+(setq projectile-switch-project-action 'projectile-find-file)
 (projectile-global-mode t)
 
 (defun subfolder-projects (dir)
