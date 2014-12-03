@@ -5,23 +5,42 @@
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
 
 ;; -----------------------------------------------------------------------------
+;; Directories
+;; -----------------------------------------------------------------------------
+
+(defvar my-config-dir (file-name-directory load-file-name)
+  "The root dir of my emacs configuration")
+(defvar my-savefile-dir (expand-file-name "savefile" my-config-dir)
+  "The folder to store automatically-generated save/history files")
+
+(setq custom-file (expand-file-name "custom.el" my-config-dir))
+
+;; -----------------------------------------------------------------------------
 ;; Packages
 ;; -----------------------------------------------------------------------------
 
-(defvar my-packages '(better-defaults
-                      switch-window
+(defvar my-packages '(ag
+                      better-defaults
+                      cider
+                      clojure-mode
+                      eval-sexp-fu
 		      evil
 		      evil-surround
 		      evil-leader
                       evil-lisp-state
-		      smartparens
+                      flycheck
 		      idle-highlight-mode
 		      ido-ubiquitous
 		      magit
-                      ag
-                      zenburn-theme
+                      projectile
+                      puppet-mode
+                      puppetfile-mode
+                      rainbow-delimiters
+		      smartparens
+                      switch-window
                       solarized-theme
-                      projectile))
+                      zenburn-theme
+))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -100,7 +119,9 @@
 (evil-leader/set-leader ",")
 
 (evil-leader/set-key
-  "g" 'magit-status)
+  "g" 'magit-status
+  "p" 'projectile-switch-project
+  "," 'projectile-find-file)
 
 (define-key evil-normal-state-map "L" 'evil-lisp-state)
 
@@ -128,8 +149,52 @@
 (show-smartparens-global-mode +1)
 
 ;; -----------------------------------------------------------------------------
+;; Projectile
+;; -----------------------------------------------------------------------------
+
+(require 'projectile)
+(setq projectile-cache-file (expand-file-name "projectile.cache" my-savefile-dir))
+(projectile-global-mode t)
+
+;; -----------------------------------------------------------------------------
 ;; Programming modes
 ;; -----------------------------------------------------------------------------
 
 (add-hook 'prog-mode-hook (lambda ()
                             (smartparens-mode 1)))
+
+;; -----------------------------------------------------------------------------
+;; Flycheck
+;; -----------------------------------------------------------------------------
+
+(require 'flycheck)
+(global-flycheck-mode)
+
+;; -----------------------------------------------------------------------------
+;; Clojure
+;; -----------------------------------------------------------------------------
+
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "λ")
+                               nil))))))
+
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("\\(#\\)("
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "ƒ")
+                               nil))))))
+
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("\\(#\\){"
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "∈")
+                               nil))))))
+
+(require 'clojure-mode)
+
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
