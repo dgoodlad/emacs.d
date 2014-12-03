@@ -38,6 +38,7 @@
                       gitignore-mode
                       idle-highlight-mode
                       ido-ubiquitous
+                      key-chord
                       magit
                       powerline
                       powerline-evil
@@ -135,6 +136,9 @@
 ;; Keybindings
 ;; -----------------------------------------------------------------------------
 
+(require 'key-chord)
+(key-chord-mode 1)
+
 (require 'zoom-frm)
 (global-set-key (kbd "C-+") 'zoom-in/out)
 (global-set-key (kbd "C--") 'zoom-in/out)
@@ -157,8 +161,9 @@
 
 (setq evil-shift-width 2)
 
-(evil-leader/set-leader ",")
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
+(evil-leader/set-leader ",")
 (evil-leader/set-key
   "g" 'magit-status
   "p" 'projectile-switch-project
