@@ -23,6 +23,7 @@
                       better-defaults
                       cider
                       clojure-mode
+                      enh-ruby-mode
                       eval-sexp-fu
 		      evil
 		      evil-surround
@@ -39,6 +40,7 @@
                       puppet-mode
                       puppetfile-mode
                       rainbow-delimiters
+                      rspec-mode
 		      smartparens
                       smex
                       switch-window
@@ -248,3 +250,24 @@
 (require 'clojure-mode)
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+;; -----------------------------------------------------------------------------
+;; Ruby
+;; -----------------------------------------------------------------------------
+
+(require 'enh-ruby-mode)
+
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+
+(add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$$" . enh-ruby-mode))
+
+(add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
+
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Puppetfile$" . enh-ruby-mode))
+
+(provide 'init)
+;;; init.el ends here
