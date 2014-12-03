@@ -25,19 +25,20 @@
                       clojure-mode
                       enh-ruby-mode
                       eval-sexp-fu
-		      evil
-		      evil-surround
-		      evil-leader
+                      evil
+                      evil-surround
+                      evil-leader
                       evil-lisp-state
                       flx-ido
                       flycheck
+                      git-gutter-fringe
                       git-link
                       gitconfig-mode
                       github-browse-file
                       gitignore-mode
-		      idle-highlight-mode
-		      ido-ubiquitous
-		      magit
+                      idle-highlight-mode
+                      ido-ubiquitous
+                      magit
                       powerline
                       powerline-evil
                       projectile
@@ -45,7 +46,7 @@
                       puppetfile-mode
                       rainbow-delimiters
                       rspec-mode
-		      smartparens
+                      smartparens
                       smex
                       switch-window
                       solarized-theme
