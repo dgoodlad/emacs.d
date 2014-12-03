@@ -28,6 +28,7 @@
 		      evil-surround
 		      evil-leader
                       evil-lisp-state
+                      flx-ido
                       flycheck
 		      idle-highlight-mode
 		      ido-ubiquitous
@@ -94,10 +95,24 @@
 ;; TAB indents the current line, or if already indents, runs auto-complete
 (setq tab-always-indent 'complete)
 
+;; -----------------------------------------------------------------------------
+;; ido Mode
+;; -----------------------------------------------------------------------------
+
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
 ;; -----------------------------------------------------------------------------
+
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
 (global-set-key (kbd "C-x o") 'switch-window)
 
@@ -154,7 +169,25 @@
 
 (require 'projectile)
 (setq projectile-cache-file (expand-file-name "projectile.cache" my-savefile-dir))
+(setq projectile-switch-project-action 'projectile-find-file-in-known-projects)
 (projectile-global-mode t)
+
+(defun subfolder-projects (dir)
+  (--map (file-relative-name it dir)
+        (-filter (lambda (subdir)
+                   (--reduce-from (or acc (funcall it subdir)) nil
+                                 projectile-project-root-files-functions))
+                 (-filter #'file-directory-p (directory-files dir t)))))
+
+(defun -add-known-subfolder-projects (dir)
+  (-map #'projectile-add-known-project
+        (--map (concat (file-name-as-directory dir) it)
+               (subfolder-projects dir))))
+
+(defun add-known-subfolder-projects ()
+  "Prompts for a directory, and adds all projects found there to projectile"
+  (interactive)
+  (-add-known-subfolder-projects (ido-read-directory-name "Add projects under: ")))
 
 ;; -----------------------------------------------------------------------------
 ;; Programming modes
