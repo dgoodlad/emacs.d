@@ -60,6 +60,23 @@
                             (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; -----------------------------------------------------------------------------
+;; Editing
+;; -----------------------------------------------------------------------------
+
+(setq-default indent-tabs-mode nil) ;; don't use tabs to indent
+(setq-default tab-width 8)          ;; but render hard tabs 8 characters
+
+;; Newline at EOF
+(setq require-final-newline t)
+
+;; Revert buffers automatically when the underlying file changes
+(global-auto-revert-mode t)
+
+;; TAB indents the current line, or if already indents, runs auto-complete
+(setq tab-always-indent 'complete)
+
+
+;; -----------------------------------------------------------------------------
 ;; Keybindings
 ;; -----------------------------------------------------------------------------
 
