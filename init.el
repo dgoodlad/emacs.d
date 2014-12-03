@@ -66,6 +66,8 @@
 ;; Look & feel
 ;; -----------------------------------------------------------------------------
 
+(setq inhibit-splash-screen t)
+
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :family "Meslo LG M DZ")
   (set-face-attribute 'default nil :height 120) ; size in 1/10 points
