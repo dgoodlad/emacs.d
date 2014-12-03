@@ -70,6 +70,9 @@
 (require 'powerline-evil)
 (powerline-center-evil-theme)
 
+(require 'git-gutter-fringe)
+(global-git-gutter-mode 1)
+
 ;; -----------------------------------------------------------------------------
 ;; Environment
 ;; -----------------------------------------------------------------------------
