@@ -31,6 +31,10 @@
                       evil-lisp-state
                       flx-ido
                       flycheck
+                      git-link
+                      gitconfig-mode
+                      github-browse-file
+                      gitignore-mode
 		      idle-highlight-mode
 		      ido-ubiquitous
 		      magit
