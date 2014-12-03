@@ -182,6 +182,9 @@
   "l" 'magit-key-mode-popup-logging
   "h" 'magit-toggle-diff-refine-hunk)
 
+(key-chord-define magit-status-mode-map ",," 'projectile-find-file)
+(key-chord-define magit-status-mode-map ",p" 'projectile-switch-project)
+
 ;; -----------------------------------------------------------------------------
 ;; Smartparens
 ;; -----------------------------------------------------------------------------
