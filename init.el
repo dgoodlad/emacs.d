@@ -64,11 +64,11 @@
   (set-face-attribute 'default nil :height 120) ; size in 1/10 points
   )
 
-(load-theme 'solarized-dark t)
+(load-theme 'zenburn t)
 
 (require 'powerline)
 (require 'powerline-evil)
-(powerline-evil-vim-color-theme)
+(powerline-center-evil-theme)
 
 ;; -----------------------------------------------------------------------------
 ;; Environment
