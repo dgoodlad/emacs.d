@@ -40,6 +40,7 @@
 		      smartparens
                       switch-window
                       solarized-theme
+                      yaml-mode
                       zenburn-theme
 ))
 
