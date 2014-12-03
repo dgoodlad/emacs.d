@@ -20,6 +20,7 @@
 		      magit
                       ag
                       zenburn-theme
+                      solarized-theme
                       projectile))
 
 (require 'package)
@@ -38,7 +39,7 @@
   (set-face-attribute 'default nil :height 120) ; size in 1/10 points
   )
 
-(load-theme 'zenburn t)
+(load-theme 'solarized-dark t)
 
 ;; -----------------------------------------------------------------------------
 ;; Environment
