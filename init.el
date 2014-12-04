@@ -40,8 +40,7 @@
                       ido-ubiquitous
                       key-chord
                       magit
-                      powerline
-                      powerline-evil
+                      markdown-mode
                       projectile
                       puppet-mode
                       puppetfile-mode
@@ -285,6 +284,19 @@
 
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Puppetfile$" . enh-ruby-mode))
+
+;; -----------------------------------------------------------------------------
+;; Markdown
+;; -----------------------------------------------------------------------------
+
+(require 'markdown-mode)
+
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;; -----------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------
 
 (provide 'init)
 ;;; init.el ends here
