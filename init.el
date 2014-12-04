@@ -153,6 +153,7 @@
 (global-set-key (kbd "C-+") 'zoom-in/out)
 (global-set-key (kbd "C--") 'zoom-in/out)
 (global-set-key (kbd "C-0") 'zoom-in/out)
+(global-set-key (kbd "s-f") 'toggle-frame-fullscreen)
 
 (global-set-key (kbd "C-x o") 'switch-window)
 
