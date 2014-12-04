@@ -14,6 +14,7 @@
   "The folder to store automatically-generated save/history files")
 
 (setq custom-file (expand-file-name "custom.el" my-config-dir))
+(load custom-file)
 
 ;; -----------------------------------------------------------------------------
 ;; Packages
