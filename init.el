@@ -24,6 +24,7 @@
                       better-defaults
                       cider
                       clojure-mode
+                      company-mode
                       diminish
                       enh-ruby-mode
                       eval-sexp-fu
@@ -241,6 +242,7 @@
 
 (add-hook 'prog-mode-hook (lambda ()
                             (idle-highlight-mode 1)
+                            (company-mode 1)
                             (if window-system (hl-line-mode t))
                             (smartparens-mode 1)))
 
