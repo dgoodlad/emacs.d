@@ -59,12 +59,23 @@
                       zoom-frm
 ))
 
+(defun packages-installed-p (packages)
+  "Check if all packages in `packages` are installed"
+  (every #'package-installed-p packages))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+
+(unless (packages-installed-p my-packages)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  (message "%s" "Installing packages...")
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p)))
+  (message "%s" " done."))
 
 ;; -----------------------------------------------------------------------------
 ;; Look & feel
