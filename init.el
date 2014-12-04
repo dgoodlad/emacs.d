@@ -46,6 +46,7 @@
                       puppetfile-mode
                       rainbow-delimiters
                       rspec-mode
+                      smart-mode-line
                       smartparens
                       smex
                       switch-window
@@ -75,9 +76,9 @@
 
 (load-theme 'zenburn t)
 
-(require 'powerline)
-(require 'powerline-evil)
-(powerline-center-evil-theme)
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'respectful)
 
 (require 'git-gutter-fringe)
 (global-git-gutter-mode 1)
