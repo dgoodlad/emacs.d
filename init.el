@@ -35,6 +35,7 @@
                       better-defaults
                       cider
                       clojure-mode
+                      clojure-quick-repls
                       company
                       diminish
                       enh-ruby-mode
@@ -43,6 +44,7 @@
                       evil-surround
                       evil-leader
                       evil-lisp-state
+                      exec-path-from-shell
                       flx-ido
                       flycheck
                       git-gutter-fringe
@@ -142,6 +144,9 @@
 (if (not (getenv "TERM_PROGRAM"))
     (setenv "PATH"
             (shell-command-to-string "source $HOME/.zshrc && printf $PATH")))
+
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
 
 ;; ensure that ansi-term can render utf-8
 (defadvice ansi-term (after advise-ansi-term-coding-system)
@@ -321,8 +326,16 @@
                                nil))))))
 
 (require 'clojure-mode)
+(require 'cider)
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-repl-mode-hook 'subword-mode)
+(add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+
+(setq nrepl-log-messages t)
+
 
 ;; -----------------------------------------------------------------------------
 ;; Ruby
