@@ -182,6 +182,7 @@
 (define-key evil-normal-state-map "L" 'evil-lisp-state)
 
 ; Magit/evil
+(require 'magit)
 (evil-add-hjkl-bindings magit-log-mode-map 'emacs)
 (evil-add-hjkl-bindings magit-commit-mode-map 'emacs)
 (evil-add-hjkl-bindings magit-branch-manager-mode-map 'emacs
