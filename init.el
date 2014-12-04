@@ -24,6 +24,7 @@
                       better-defaults
                       cider
                       clojure-mode
+                      diminish
                       enh-ruby-mode
                       eval-sexp-fu
                       evil
@@ -80,6 +81,12 @@
 (require 'smart-mode-line)
 (sml/setup)
 (sml/apply-theme 'respectful)
+
+(require 'diminish)
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+(eval-after-load "rainbow-delimiters" '(diminish 'rainbow-delimiters-mode))
+(eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
+(eval-after-load "magit" '(diminish 'magit-auto-revert-mode))
 
 (require 'git-gutter-fringe)
 (global-git-gutter-mode 1)
