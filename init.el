@@ -25,11 +25,17 @@
 ;; Packages
 ;; -----------------------------------------------------------------------------
 
+(require 'cl)
+(require 'package)
+
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
 (defvar my-packages '(ag
                       better-defaults
                       cider
                       clojure-mode
-                      company-mode
+                      company
                       diminish
                       enh-ruby-mode
                       eval-sexp-fu
@@ -67,10 +73,6 @@
 (defun packages-installed-p (packages)
   "Check if all packages in `packages` are installed"
   (every #'package-installed-p packages))
-
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
 
 (unless (packages-installed-p my-packages)
   (message "%s" "Refreshing package database...")
