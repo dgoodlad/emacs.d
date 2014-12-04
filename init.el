@@ -16,6 +16,11 @@
 (setq custom-file (expand-file-name "custom.el" my-config-dir))
 (load custom-file)
 
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;; -----------------------------------------------------------------------------
 ;; Packages
 ;; -----------------------------------------------------------------------------
@@ -102,6 +107,30 @@
 
 (require 'git-gutter-fringe)
 (global-git-gutter-mode 1)
+
+;; meaningful names for buffers with the same name
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
+;; saveplace remembers your location in a file when saving files
+(require 'saveplace)
+(setq save-place-file (expand-file-name "saveplace" my-savefile-dir))
+;; activate it for all buffers
+(setq-default save-place t)
+
+(global-hl-line-mode 1)
+
+(require 'whitespace)
+(defun enable-whitespace ()
+  "Enable whitespace-mode"
+  (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+  (whitespace-mode +1))
+(add-hook 'text-mode-hook 'enable-whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face tabs empty trailing lines-tail))
 
 ;; -----------------------------------------------------------------------------
 ;; Environment
