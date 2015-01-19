@@ -52,11 +52,17 @@
                       gitconfig-mode
                       github-browse-file
                       gitignore-mode
+                      helm
+                      helm-ag
+                      helm-projectile
                       idle-highlight-mode
                       ido-ubiquitous
                       key-chord
+                      latest-clojure-libraries
                       magit
                       markdown-mode
+                      muttrc-mode
+                      popwin
                       projectile
                       puppet-mode
                       puppetfile-mode
@@ -108,6 +114,8 @@
 (eval-after-load "rainbow-delimiters" '(diminish 'rainbow-delimiters-mode))
 (eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
 (eval-after-load "magit" '(diminish 'magit-auto-revert-mode))
+(eval-after-load "company" '(diminish 'company-mode))
+(eval-after-load "cider" '(diminish 'eldoc-mode))
 
 (require 'git-gutter-fringe)
 (global-git-gutter-mode 1)
@@ -135,6 +143,36 @@
 (add-hook 'text-mode-hook 'enable-whitespace)
 (setq whitespace-line-column 80) ;; limit line length
 (setq whitespace-style '(face tabs empty trailing lines-tail))
+
+(require 'popwin)
+(popwin-mode 1)
+(setq popwin:special-display-config
+      '(("*Help*"  :height 30)
+        ("*Completions*" :noselect t)
+        ("*Messages*" :noselect t :height 30)
+        ("*Apropos*" :noselect t :height 30)
+        ("*compilation*" :noselect t)
+        ("*Backtrace*" :height 30)
+        ("*Messages*" :height 30)
+        ("*Occur*" :noselect t)
+        ("*Ido Completions*" :noselect t :height 30)
+        ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
+        ("*magit-diff*" :noselect t :height 40 :width 80)
+        ("*magit-edit-log*" :noselect t :height 15 :width 80)
+        ("\\*ansi-term\\*.*" :regexp t :height 30)
+        ("*shell*" :height 30)
+        (".*overtone.log" :regexp t :height 30)
+        ("*gists*" :height 30)
+        ("*sldb.*":regexp t :height 30)
+        ("*cider-error*" :height 30 :stick t)
+        ("*cider-doc*" :height 30 :stick t)
+        ("*cider-src*" :height 30 :stick t)
+        ("*cider-result*" :height 30 :stick t)
+        ("*cider-macroexpansion*" :height 30 :stick t)
+        ("*Kill Ring*" :height 30)
+        ("*Compile-Log*" :height 30 :stick t)
+        ("*git-gutter:diff*" :height 30 :stick t)))
+(global-set-key (kbd "C-p") popwin:keymap)
 
 ;; -----------------------------------------------------------------------------
 ;; Environment
@@ -187,8 +225,23 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
-(require 'smex) ;; ido-based M-x
-(global-set-key (kbd "M-x") 'smex)
+;(require 'smex) ;; ido-based M-x
+;(global-set-key (kbd "M-x") 'smex)
+
+;; -----------------------------------------------------------------------------
+;; helm
+;; -----------------------------------------------------------------------------
+
+(require 'helm-config)
+(require 'helm-projectile)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
@@ -224,9 +277,11 @@
 
 (evil-leader/set-leader ",")
 (evil-leader/set-key
+  "a" 'helm-projectile-ag
+  "b" 'ido-switch-buffer
   "g" 'magit-status
-  "p" 'projectile-switch-project
-  "," 'projectile-find-file)
+  "p" 'helm-projectile-switch-project
+  "," 'helm-projectile-find-file)
 
 (define-key evil-normal-state-map "L" 'evil-lisp-state)
 
@@ -242,8 +297,8 @@
   "l" 'magit-key-mode-popup-logging
   "h" 'magit-toggle-diff-refine-hunk)
 
-(key-chord-define magit-status-mode-map ",," 'projectile-find-file)
-(key-chord-define magit-status-mode-map ",p" 'projectile-switch-project)
+(key-chord-define magit-status-mode-map ",," 'helm-projectile-find-file)
+(key-chord-define magit-status-mode-map ",p" 'helm-projectile-switch-project)
 
 ;; -----------------------------------------------------------------------------
 ;; Smartparens
@@ -336,6 +391,14 @@
 
 (setq nrepl-log-messages t)
 
+(setq clojure-quick-repls-cljs-setup
+      "(require 'weasel.repl.websocket)
+       (require 'environ.core)
+       (cemerick.piggieback/cljs-repl
+         :repl-env
+         (weasel.repl.websocket/repl-env
+           :ip \"0.0.0.0\"
+           :port (environ.core/env :cljs-repl-port)))")
 
 ;; -----------------------------------------------------------------------------
 ;; Ruby
