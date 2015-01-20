@@ -193,15 +193,6 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-;; ensure that ansi-term can render utf-8
-(defadvice ansi-term (after advise-ansi-term-coding-system)
-    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-(ad-activate 'ansi-term)
-
-;; paste in ansi-term
-(add-hook 'term-mode-hook (lambda ()
-                            (define-key term-raw-map (kbd "C-y") 'term-paste)))
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; -----------------------------------------------------------------------------
@@ -434,6 +425,38 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; -----------------------------------------------------------------------------
+;; Terminals (ansi-term)
+;; -----------------------------------------------------------------------------
+
+(require 'term)
+
+;; make sure ansi colour character escapes are honoured
+(ansi-color-for-comint-mode-on)
+
+;; ensure that ansi-term can render utf-8
+(add-hook 'term-exec-hook (lambda ()
+                            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
+
+;; paste in ansi-term via C-y
+(defun term-paste (&optional string)
+  (interactive)
+  (process-send-string
+   (get-buffer-process (current-buffer))
+   (if string string (current-kill 0))))
+
+(add-hook 'term-mode-hook (lambda ()
+                            (goto-address-mode)
+                            (define-key term-raw-map (kbd "C-y") 'term-paste)))
+
+;; kill buffer when terminal process is killed
+;(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+;  (if (memq (process-status proc) '(signal exit))
+;      (let ((buffer (process-buffer proc)))
+;        ad-do-it
+;        (kill-buffer buffer))
+;    ad-do-it))
+;(ad-activate 'term-sentinel)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
