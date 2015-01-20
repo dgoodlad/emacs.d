@@ -175,6 +175,12 @@
         ("*git-gutter:diff*" :height 30 :stick t)))
 (global-set-key (kbd "C-p") popwin:keymap)
 
+;; "Focus" mode, making the buffer 80ch wide, centered in the frame
+(defun focus-mode (&optional window)
+  (interactive)
+  (let ((margin (- (/ (- (window-total-width window) 80) 2) 1)))
+    (set-window-margins window margin margin)))
+
 ;; -----------------------------------------------------------------------------
 ;; Environment
 ;; -----------------------------------------------------------------------------
