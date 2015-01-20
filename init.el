@@ -223,9 +223,6 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
-;(require 'smex) ;; ido-based M-x
-;(global-set-key (kbd "M-x") 'smex)
-
 ;; -----------------------------------------------------------------------------
 ;; helm
 ;; -----------------------------------------------------------------------------
