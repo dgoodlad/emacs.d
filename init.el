@@ -33,6 +33,7 @@
 
 (defvar my-packages '(ag
                       better-defaults
+                      bundler
                       cider
                       clojure-mode
                       clojure-quick-repls
@@ -57,6 +58,7 @@
                       helm-projectile
                       idle-highlight-mode
                       ido-ubiquitous
+                      inf-ruby
                       key-chord
                       latest-clojure-libraries
                       magit
@@ -67,12 +69,14 @@
                       puppet-mode
                       puppetfile-mode
                       rainbow-delimiters
+                      rbenv
                       rspec-mode
                       smart-mode-line
                       smartparens
                       smex
                       switch-window
                       solarized-theme
+                      web-mode
                       yaml-mode
                       zenburn-theme
                       zoom-frm
@@ -228,15 +232,32 @@
 ;; -----------------------------------------------------------------------------
 
 (require 'helm-config)
+(require 'helm-ag)
 (require 'helm-projectile)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+(helm-mode 1)
+
+(setq projectile-switch-project-action 'helm-projectile)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
@@ -246,8 +267,9 @@
 (key-chord-mode 1)
 
 (require 'zoom-frm)
-(global-set-key (kbd "C-+") 'zoom-in/out)
-(global-set-key (kbd "C--") 'zoom-in/out)
+(global-set-key (kbd "s-+") 'zoom-in/out)
+(global-set-key (kbd "s-=") 'zoom-in/out)
+(global-set-key (kbd "s--") 'zoom-in/out)
 (global-set-key (kbd "C-0") 'zoom-in/out)
 (global-set-key (kbd "s-f") 'toggle-frame-fullscreen)
 
@@ -413,6 +435,38 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Puppetfile$" . enh-ruby-mode))
 
+;; Indent two spaces after trailing parens/braces
+(setq ruby-deep-indent-paren nil)
+(setq enh-ruby-deep-indent-paren nil)
+
+;; -----------------------------------------------------------------------------
+;; Javascript / JS / Coffee
+;; -----------------------------------------------------------------------------
+
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+(flycheck-define-checker jsxhint-checker
+  "A JSX syntax and style checker based on JSXHint."
+
+  :command ("jsxhint" source)
+  :error-patterns
+  ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
+  :modes (web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (equal web-mode-content-type "jsx")
+              ;; enable flycheck
+              (flycheck-select-checker 'jsxhint-checker)
+              (flycheck-mode))))
+
+(require 'coffee-mode)
+
+(setq coffee-indent-tabs-mode nil)
+(setq coffee-tab-width 2)
+(custom-set-variables '(coffee-tab-width 2))
+
 ;; -----------------------------------------------------------------------------
 ;; Markdown
 ;; -----------------------------------------------------------------------------
@@ -457,6 +511,9 @@
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
+
+;;; extra
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (provide 'init)
 ;;; init.el ends here
