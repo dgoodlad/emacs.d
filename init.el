@@ -297,7 +297,7 @@
 (evil-leader/set-leader ",")
 (evil-leader/set-key
   "a" 'helm-projectile-ag
-  "b" 'ido-switch-buffer
+  "b" 'helm-buffers-list
   "g" 'magit-status
   "p" 'helm-projectile-switch-project
   "," 'helm-projectile-find-file)
