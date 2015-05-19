@@ -49,6 +49,7 @@
                       exec-path-from-shell
                       flx-ido
                       flycheck
+                      foreman-mode
                       git-gutter-fringe
                       git-link
                       gitconfig-mode
