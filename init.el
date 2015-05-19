@@ -37,6 +37,7 @@
                       cider
                       clojure-mode
                       clojure-quick-repls
+                      color-theme-solarized
                       company
                       diminish
                       enh-ruby-mode
@@ -75,7 +76,6 @@
                       smartparens
                       smex
                       switch-window
-                      solarized-theme
                       web-mode
                       yaml-mode
                       zenburn-theme
@@ -108,11 +108,12 @@
   (set-face-attribute 'default nil :height 120) ; size in 1/10 points
   )
 
-(load-theme 'zenburn t)
+(load-theme 'solarized t)
 
-(require 'smart-mode-line)
+(setq sml/theme 'respectful)
 (sml/setup)
-(sml/apply-theme 'respectful)
+;(require 'powerline)
+;(powerline-center-evil-theme)
 
 (require 'diminish)
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
