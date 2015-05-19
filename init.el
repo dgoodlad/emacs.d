@@ -441,6 +441,10 @@
 (setq ruby-deep-indent-paren nil)
 (setq enh-ruby-deep-indent-paren nil)
 
+(add-hook 'enh-ruby-mode-hook
+          (lambda ()
+            (rbenv-use-corresponding)))
+
 ;; -----------------------------------------------------------------------------
 ;; Javascript / JS / Coffee
 ;; -----------------------------------------------------------------------------
