@@ -521,5 +521,11 @@
 ;;; extra
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+;;; battery status
+(setq battery-mode-line-format " %t (%p%%)")
+
+;;; ensure that the emacs daemon is running for emacsclient
+(server-start)
+
 (provide 'init)
 ;;; init.el ends here
