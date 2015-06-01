@@ -77,7 +77,9 @@
                       smartparens
                       smex
                       switch-window
+                      terraform-mode
                       web-mode
+                      whitespace-cleanup-mode
                       yaml-mode
                       zenburn-theme
                       zoom-frm
@@ -113,8 +115,6 @@
 
 (setq sml/theme 'respectful)
 (sml/setup)
-;(require 'powerline)
-;(powerline-center-evil-theme)
 
 (require 'diminish)
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
@@ -217,6 +217,10 @@
 ;; TAB indents the current line, or if already indents, runs auto-complete
 (setq tab-always-indent 'complete)
 
+;; Automatically cleanup whitespace on save, but only if the buffer's
+;; whitespace was clean when it was first loaded
+(global-whitespace-cleanup-mode 1)
+
 ;; -----------------------------------------------------------------------------
 ;; ido Mode
 ;; -----------------------------------------------------------------------------
@@ -239,6 +243,11 @@
 
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
+
+;; Customize helm-ag
+(custom-set-variables
+   ;; Use the_platinum_searcher
+   '(helm-ag-base-command "pt --nocolor --nogroup"))
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -424,6 +433,7 @@
 ;; -----------------------------------------------------------------------------
 
 (require 'enh-ruby-mode)
+(require 'smartparens-ruby)
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
@@ -469,6 +479,9 @@
 
 (require 'coffee-mode)
 
+(custom-set-variables '(js-indent-level 2))
+(setq js-indent-level 2)
+
 (setq coffee-indent-tabs-mode nil)
 (setq coffee-tab-width 2)
 (custom-set-variables '(coffee-tab-width 2))
@@ -481,6 +494,12 @@
 
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; -----------------------------------------------------------------------------
+;; Other languages
+;; -----------------------------------------------------------------------------
+
+(custom-set-variables '(terraform-indent-level 2))
 
 ;; -----------------------------------------------------------------------------
 ;; Terminals (ansi-term)
