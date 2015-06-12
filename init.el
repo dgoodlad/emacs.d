@@ -395,6 +395,7 @@
 (require 'flycheck)
 (global-flycheck-mode)
 
+
 ;; -----------------------------------------------------------------------------
 ;; Clojure
 ;; -----------------------------------------------------------------------------
@@ -482,12 +483,16 @@
   :error-patterns
   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
   :modes (web-mode))
+;(flycheck-add-mode 'javascript-standard 'javacript-mode)
 (add-hook 'web-mode-hook
           (lambda ()
             (when (equal web-mode-content-type "jsx")
               ;; enable flycheck
               (flycheck-select-checker 'jsxhint-checker)
               (flycheck-mode))))
+(add-hook 'javascript-mode-hook
+          (lambda ()
+            (flycheck-select-checker 'javascript-standard)))
 
 (require 'coffee-mode)
 
@@ -511,6 +516,7 @@
 ;; Other languages
 ;; -----------------------------------------------------------------------------
 
+(require 'terraform-mode)
 (custom-set-variables '(terraform-indent-level 2))
 
 ;; -----------------------------------------------------------------------------
