@@ -39,6 +39,7 @@
                       clojure-quick-repls
                       color-theme-solarized
                       company
+                      company-inf-ruby
                       diminish
                       enh-ruby-mode
                       eval-sexp-fu
@@ -361,6 +362,8 @@
 (setq projectile-switch-project-action 'projectile-find-file)
 (projectile-global-mode t)
 
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
 (defun subfolder-projects (dir)
   (--map (file-relative-name it dir)
         (-filter (lambda (subdir)
@@ -459,6 +462,9 @@
 
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Puppetfile$" . enh-ruby-mode))
+
+;; inf-ruby
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
 
 ;; Indent two spaces after trailing parens/braces
 (setq ruby-deep-indent-paren nil)
