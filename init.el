@@ -113,6 +113,13 @@
   )
 
 (load-theme 'solarized t)
+(defun toggle-solarized-background ()
+  (interactive)
+  (let ((mode (if (eq (frame-parameter nil 'background-mode) 'light) 'dark 'light)))
+    (set-frame-parameter nil 'background-mode mode)
+    (set-terminal-parameter nil 'background-mode mode)
+    (mapc 'frame-set-background-mode (frame-list))
+    (enable-theme 'solarized)))
 
 (setq sml/theme 'respectful)
 (sml/setup)
