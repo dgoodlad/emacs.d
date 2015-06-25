@@ -509,12 +509,10 @@
 
 (require 'coffee-mode)
 
-(custom-set-variables '(js-indent-level 2))
-(setq js-indent-level 2)
+(custom-set-variables '(js-indent-level 2 t))
 
 (setq coffee-indent-tabs-mode nil)
-(setq coffee-tab-width 2)
-(custom-set-variables '(coffee-tab-width 2))
+(custom-set-variables '(coffee-tab-width 2 t))
 
 ;; -----------------------------------------------------------------------------
 ;; Markdown
@@ -530,7 +528,7 @@
 ;; -----------------------------------------------------------------------------
 
 (require 'terraform-mode)
-(custom-set-variables '(terraform-indent-level 2))
+(custom-set-variables '(terraform-indent-level 2 t))
 
 ;; -----------------------------------------------------------------------------
 ;; Terminals (ansi-term)
