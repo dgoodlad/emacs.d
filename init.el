@@ -368,7 +368,7 @@
 (setq projectile-switch-project-action 'projectile-find-file)
 (projectile-global-mode t)
 
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
+;(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 (defun subfolder-projects (dir)
   (--map (file-relative-name it dir)
