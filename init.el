@@ -128,7 +128,6 @@
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "rainbow-delimiters" '(diminish 'rainbow-delimiters-mode))
 (eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
-(eval-after-load "magit" '(diminish 'magit-auto-revert-mode))
 (eval-after-load "company" '(diminish 'company-mode))
 (eval-after-load "cider" '(diminish 'eldoc-mode))
 
@@ -339,10 +338,10 @@
 (evil-add-hjkl-bindings magit-commit-mode-map 'emacs)
 (evil-add-hjkl-bindings magit-branch-manager-mode-map 'emacs
   "K" 'magit-discard-item
-  "L" 'magit-key-mode-popup-logging)
+  "L" 'magit-log-popup)
 (evil-add-hjkl-bindings magit-status-mode-map 'emacs
   "K" 'magit-discard-item
-  "l" 'magit-key-mode-popup-logging
+  "l" 'magit-log-popup
   "h" 'magit-toggle-diff-refine-hunk)
 
 (key-chord-define magit-status-mode-map ",," 'helm-projectile-find-file)
